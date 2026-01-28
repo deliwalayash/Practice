@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dog Generator</title>
+</head>
+<body>
+
+  <h1>Random Dog 🐕</h1>
+  <button id="btn">Get Dog Using Fetch</button>
+  <button id="btn2">Get Dog Using Axios</button>
+  <br><br>
+  <img id="dogImg" width="300"/>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    
+    const getDogimg = async()=>{
+        try{
+            const res=await axios.get("https://dog.ceo/api/breeds/image/random")
+            dogImg.src =await res.data.message
+        }catch(err){
+            console.log(err.message)
+
+        }
+    }
+    const btn=document.getElementById("btn").addEventListener("click",getData)
+    const btn2=document.getElementById("btn2").addEventListener("click",getDogimg)
+    const dogImg=document.getElementById("dogImg")
+    async function getData(){
+        try{
+            const res=await fetch('https://dog.ceo/api/breeds/image/random')
+            
+            const data=await res.json()
+            dogImg.src =data.message
+
+
+            }
+            catch(err){
+                console.log(err.message)
+
+            }
+        }
+
+    
+</script>
+</html>
