@@ -6,7 +6,7 @@ import TodoItem from "./components/TodoItem"
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([])
   const [editingId, setEditingId] = useState<number | null>(null)
-  const [inputValue, setInputValue] = useState("")
+  // const [inputValue, setInputValue] = useState("")
 
   const addOrUpdateTodo = (title: string) => {
     if (!title.trim()) return
