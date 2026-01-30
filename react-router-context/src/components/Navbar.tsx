@@ -13,49 +13,59 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-      {/* Left */}
-      <div className="flex items-center gap-4">
-        <Link to="/" className="text-xl font-bold">
-          VibeApp
-        </Link>
-
-        {isAuthenticated && (
-          <Link
-            to="/dashboard"
-            className="text-sm text-gray-600 dark:text-gray-300 hover:underline"
-          >
-            Dashboard
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Left */}
+        <div className="flex items-center gap-8">
+          <Link to="/" className="text-xl font-bold tracking-tight">
+            VibeApp
           </Link>
-        )}
-      </div>
 
-      {/* Right */}
-      <div className="flex items-center gap-4">
-        <button
-          onClick={toggleTheme}
-          className="px-3 py-1 text-sm rounded bg-gray-200 dark:bg-gray-700"
-        >
-          {theme === "dark" ? "Light" : "Dark"}
-        </button>
+           <Link
+    to="/"
+    className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
+  >
+    Home
+  </Link>
 
-        {!isAuthenticated ? (
-          <Link
-            to="/login"
-            className="px-4 py-1 rounded bg-indigo-600 text-white text-sm"
-          >
-            Login
-          </Link>
-        ) : (
+          {isAuthenticated && (
+            <Link
+              to="/dashboard"
+              className="text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
+            >
+              Dashboard
+            </Link>
+          )}
+        </div>
+
+        {/* Right */}
+        <div className="flex items-center gap-4">
+          {/* Theme toggle */}
           <button
-            onClick={handleLogout}
-            className="px-4 py-1 rounded bg-red-600 text-white text-sm"
+            onClick={toggleTheme}
+            className="px-3 py-1.5 text-sm rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
           >
-            Logout
+            {theme === "dark" ? "Light" : "Dark"}
           </button>
-        )}
-      </div>
-    </nav>
+
+          {!isAuthenticated ? (
+            <Link
+              to="/login"
+              className="px-4 py-1.5 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition"
+            >
+              Login
+            </Link>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="px-4 py-1.5 rounded-lg bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition"
+            >
+              Logout
+            </button>
+          )}
+        </div>
+      </nav>
+    </header>
   )
 }
 
