@@ -27,6 +27,7 @@ const App = () => {
       }
       setTodos(prev => [...prev, newTodo])
       setInputValue("")
+      console.log()
     }
   }
 
